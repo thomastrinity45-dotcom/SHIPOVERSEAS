@@ -1,0 +1,1598 @@
+/* ==========================================================================
+   GLOBAL RESET & PROFESSIONAL TYPOGRAPHY
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #e8e6e1; 
+    color: #333333;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- View Toggle Classes --- */
+.hidden-view {
+    display: none !important;
+}
+
+a {
+    color: #d40511;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   HEADER ARCHITECTURE
+   ========================================================================== */
+.main-header {
+    background-color: #ffcc00; /* Brand Yellow */
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-style: italic;
+    letter-spacing: -1px;
+}
+
+.logo-bold {
+    font-weight: 900;
+    color: #d40511; /* Brand Red */
+}
+
+.logo-light {
+    font-weight: 300;
+    color: #d40511;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: #d40511;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   NAVIGATION OVERLAY DRAWER MODULE
+   ========================================================================== */
+.full-screen-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu-active {
+    transform: translateY(0);
+}
+
+.menu-overlay-header {
+    background-color: #ffcc00;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.menu-close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #d40511;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.overlay-nav-links {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.drawer-row-item {
+    padding: 18px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    text-decoration: none;
+    border-bottom: 1px solid #ebeeef;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    text-align: left;
+    width: 100%;
+}
+
+.interactive-btn {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.style-arrow-hidden {
+    opacity: 0;
+}
+
+.dropdown-row {
+    cursor: pointer;
+}
+
+.dropdown-arrow-icon {
+    font-size: 16px;
+    color: #000000;
+}
+
+.highlight-icon-link {
+    color: #000000;
+}
+
+.left-icon-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.left-icon-group i {
+    font-size: 15px;
+    color: #000000;
+}
+
+.red-arrow {
+    color: #d40511;
+    font-size: 14px;
+}
+
+.external-link-indicator {
+    color: #d40511;
+    font-size: 13px;
+}
+
+.search-row-item {
+    justify-content: flex-start;
+    gap: 10px;
+    color: #000000;
+}
+
+.search-inline-icon {
+    font-size: 15px;
+    color: #000000;
+}
+
+.location-row-item {
+    justify-content: flex-start;
+    gap: 14px;
+    border-bottom: none;
+}
+
+.mini-flag-badge {
+    display: inline-flex;
+    width: 22px;
+    height: 14px;
+    border: 1px solid #e0e0e0;
+}
+
+.flag-green {
+    background-color: #008751;
+    flex: 1;
+}
+
+.flag-white {
+    background-color: #ffffff;
+    flex: 1;
+}
+
+.country-code-text {
+    color: #555555;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   PORTAL BASICS & CORE LAYOUT CONTAINERS
+   ========================================================================== */
+.portal-container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-title {
+    color: #000000;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   TRACKING & HOMEPAGE CORE FORMS
+   ========================================================================== */
+.track-card {
+    padding: 24px 20px;
+    text-align: center;
+}
+
+.track-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    outline: none;
+    color: #333333;
+}
+
+.input-group input:focus {
+    border-color: #d40511;
+}
+
+.btn-track {
+    background-color: #d40511;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 25px;
+    padding: 14px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.actions-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.action-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-icon {
+    font-size: 32px;
+    color: #d40511;
+    margin-bottom: 12px;
+}
+
+.card-heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 6px;
+}
+
+.card-subtext {
+    font-size: 13px;
+    color: #666666;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.premium-badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.premium-badge::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 35px 35px 0;
+    border-color: transparent #ffcc00 transparent transparent;
+}
+
+/* ==========================================================================
+   MARKETING HEROES & PROMOTIONS
+   ========================================================================== */
+.tariff-banner {
+    background-color: #ffcc00;
+    padding: 32px 24px;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.tariff-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 16px;
+    line-height: 1.25;
+}
+
+.tariff-text {
+    font-size: 15px;
+    color: #1a1a1a;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.btn-tariff-solutions {
+    background-color: #d40511;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    padding: 16px;
+    cursor: pointer;
+}
+
+.image-container-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tariff-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.flush-bottom-radius {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.flush-top-radius {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.negative-margin-top {
+    margin-top: -4px !important;
+}
+
+/* ==========================================================================
+   SERVICES & LOGISTICS INFORMATION STYLES
+   ========================================================================== */
+.info-module-card {
+    text-align: left;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.info-main-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #000000;
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+
+.info-subtitle {
+    font-size: 16px;
+    color: #444444;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.info-body-text {
+    font-size: 15px;
+    color: #333333;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.services-list-container {
+    background-color: #f6f6f6;
+    padding: 20px 16px;
+    margin: 0 -24px 24px -24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.services-list-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.services-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.square-icon-badge {
+    background-color: #ffcc00;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    font-size: 14px;
+}
+
+.service-item-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111111;
+}
+
+.btn-explore-express {
+    background-color: #d40511;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    width: 100%;
+    padding: 16px;
+    cursor: pointer;
+}
+
+.cargo-section, .media-feature-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-left-card {
+    text-align: left;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.updates-section {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bold-section-heading {
+    font-size: 26px;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+.updates-subtext {
+    font-size: 15px;
+    color: #444444;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.bulletins-list {
+    list-style: none;
+}
+
+.bulletin-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.bullet-square {
+    width: 6px;
+    height: 6px;
+    background-color: #000000;
+    display: inline-block;
+}
+
+.bulletin-link {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.bulletin-link i {
+    color: #d40511;
+    font-size: 13px;
+}
+
+.feature-accent-link {
+    font-size: 18px;
+    font-weight: 800;
+    color: #d40511;
+    text-decoration: underline;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.feature-inline-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.external-icon {
+    font-size: 13px;
+    color: #d40511;
+    margin-left: 4px;
+}
+
+.feature-description-text {
+    font-size: 14px;
+    color: #333333;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   TRACK & TRACE PERSPECTIVE VIEWS
+   ========================================================================== */
+#trackTraceView {
+    background-color: #f6f6f6 !important;
+    padding: 0 0 40px 0 !important;
+}
+
+.track-trace-hero {
+    background-color: #ffffff;
+    padding: 35px 24px 15px 24px;
+    text-align: left;
+}
+
+.track-main-heading {
+    font-size: 32px;
+    font-weight: 800;
+    color: #000000;
+    letter-spacing: -0.5px;
+}
+
+.track-input-wrapper {
+    background-color: #f6f6f6;
+    padding: 16px;
+}
+
+.embedded-track-card {
+    background-color: #ffffff;
+    border-radius: 12px !important;
+    padding: 18px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+    border: 1px solid #e6e6e6;
+}
+
+.faq-container-section {
+    background-color: #ffffff;
+    padding: 30px 24px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.faq-section-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.faq-divider-line {
+    height: 2px;
+    background-color: #1a1a1a;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.faq-accordion-item {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.faq-trigger-header {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 22px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+    cursor: pointer;
+    gap: 15px;
+    font-family: inherit;
+}
+
+.faq-trigger-header:hover {
+    color: #d40511;
+}
+
+.accordion-arrow {
+    font-size: 15px;
+    color: #000000;
+    transition: transform 0.25s ease;
+}
+
+.accordion-open .accordion-arrow {
+    transform: rotate(180deg);
+}
+
+.faq-content-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s cubic-bezier(0, 1, 0, 1);
+}
+
+.faq-content-panel p {
+    font-size: 14px;
+    color: #4a4a4a;
+    line-height: 1.5;
+    padding-bottom: 20px;
+}
+
+/* ==========================================================================
+   CUSTOMER SERVICE DIVISION
+   ========================================================================== */
+.cs-hero-section { 
+    padding: 20px 15px 10px 15px; 
+    text-align: left;
+}
+
+.cs-breadcrumb { 
+    font-size: 14px; 
+    margin-bottom: 25px; 
+    color: #666; 
+}
+
+.cs-breadcrumb-home { 
+    color: #d40511; 
+    cursor: pointer; 
+}
+
+.cs-breadcrumb-arrow { 
+    font-size: 10px; 
+    margin: 0 8px; 
+    color: #999; 
+}
+
+.cs-main-heading { 
+    font-size: 32px; 
+    font-weight: 800; 
+    margin-bottom: 10px; 
+    color: #111; 
+}
+
+.cs-subheading-text { 
+    font-size: 20px; 
+    line-height: 1.4; 
+    color: #333; 
+    font-weight: 400; 
+    margin-bottom: 20px; 
+}
+
+.cs-form-wrapper { 
+    padding: 0 15px; 
+    margin-bottom: 20px; 
+}
+
+.cs-card-container { 
+    border: 1px solid #cccccc; 
+    border-radius: 12px; 
+    padding: 20px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+    background: #fff; 
+}
+
+.cs-input-group input { 
+    width: 100%; 
+    padding: 14px; 
+    border: 1px solid #aaaaaa; 
+    border-radius: 4px; 
+    font-size: 16px; 
+    box-sizing: border-box; 
+    margin-bottom: 15px; 
+}
+
+.cs-btn-submit { 
+    width: 100%; 
+    background-color: #d40511; 
+    color: #fff; 
+    border: none; 
+    padding: 14px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+
+.cs-cards-grid { 
+    padding: 0 15px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    margin-bottom: 40px; 
+}
+
+.cs-action-card { 
+    border: 1px solid #cccccc; 
+    border-radius: 12px; 
+    padding: 20px; 
+    background: #fff; 
+    position: relative; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+    text-align: left;
+}
+
+.border-accent-gold::before { 
+    content: ""; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    width: 0; 
+    height: 0; 
+    border-top: 30px solid #ffcc00; 
+    border-left: 30px solid transparent; 
+}
+
+.cs-card-action-title { 
+    font-size: 18px; 
+    font-weight: bold; 
+    margin-bottom: 8px; 
+    color: #111; 
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+}
+
+.red-arrow-inline { 
+    color: #d40511; 
+    font-size: 14px; 
+}
+
+.cs-card-action-desc { 
+    font-size: 14px; 
+    color: #444; 
+    line-height: 1.4; 
+    margin: 0; 
+}
+
+/* ==========================================================================
+   FIND YOUR CONTACT MODAL FLOW COMPONENTS
+   ========================================================================== */
+.fc-hero-section {
+    padding: 20px 15px 10px 15px;
+    text-align: left;
+}
+
+.fc-breadcrumb {
+    font-size: 14px;
+    margin-bottom: 25px;
+    color: #666;
+}
+
+.fc-breadcrumb-home, .fc-breadcrumb-cs {
+    color: #d40511;
+}
+
+.fc-breadcrumb-arrow {
+    font-size: 10px;
+    margin: 0 8px;
+    color: #999;
+}
+
+.fc-main-heading {
+    font-size: 32px;
+    font-weight: 800;
+    color: #111;
+}
+
+.fc-sub-heading {
+    font-size: 22px;
+    font-weight: 700;
+    color: #666;
+    margin-top: 5px;
+}
+
+.fc-flow-window {
+    padding: 0 15px;
+}
+
+.fc-prompt-text {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.fc-options-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.fc-division-card {
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    padding: 16px;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.fc-division-card:hover {
+    border-color: #d40511;
+}
+
+.fc-card-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.fc-div-icon {
+    font-size: 20px;
+}
+
+.font-red {
+    color: #d40511;
+}
+
+.fc-div-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+}
+
+.fc-check-marker {
+    color: #61a60e;
+    font-size: 16px;
+    display: none;
+}
+
+/* Find Your Contact Expanded Info Canvas */
+.fc-expanded-panel {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.hidden-panel-layout {
+    display: none;
+}
+
+.fc-panel-intro {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 15px;
+}
+
+.fc-panel-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #000000;
+}
+
+.fc-panel-desc {
+    font-size: 14px;
+    color: #555555;
+    margin-top: 4px;
+}
+
+.fc-btn-visit-division {
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.fc-golden-focus-card {
+    background-color: #fffbf0;
+    border: 1px solid #ffe699;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.fc-golden-banner {
+    background-color: #ffcc00;
+    padding: 16px;
+    color: #000000;
+}
+
+.fc-banner-center-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.fc-banner-heading {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.fc-banner-body {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-top: 4px;
+}
+
+.fc-golden-body {
+    padding: 16px;
+}
+
+.fc-tracking-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.fc-tracking-sub {
+    font-size: 12px;
+    color: #666666;
+}
+
+.fc-action-links-list {
+    list-style: none;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fc-action-links-list a {
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   DHL FOR BUSINESS INTERACTIVE DESIGN SPECIFICS
+   ========================================================================== */
+#dhlBusinessView {
+    background-color: #f7f7f7;
+    padding-bottom: 40px;
+}
+
+.business-hero-section {
+    text-align: left;
+}
+
+.biz-main-heading {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    padding: 0 16px;
+    font-family: 'Arial Black', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+.biz-subheading-text {
+    font-size: 1.15rem;
+    color: #444444;
+    line-height: 1.45;
+    padding: 0 16px;
+    margin-bottom: 25px;
+}
+
+.biz-section-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #000000;
+    padding: 24px 16px 12px 16px;
+    margin: 0;
+    background-color: #ffffff;
+    text-align: left;
+}
+
+.biz-wizard-card {
+    background-color: #ffffff;
+    padding: 20px 16px;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.panel-instruction-text {
+    font-size: 1.35rem;
+    font-weight: 900;
+    line-height: 1.3;
+    color: #000000;
+    text-align: left;
+    margin: 10px 0 20px 0;
+}
+
+.biz-selection-option-card {
+    display: block;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.biz-selection-option-card.checked-option {
+    border: 2.5px solid #000000;
+}
+
+.option-details-content {
+    flex: 1;
+}
+
+.option-headline {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 4px 0;
+}
+
+.option-badge-pill {
+    display: inline-block;
+    border: 1px solid #767676;
+    border-radius: 12px;
+    padding: 2px 12px;
+    font-size: 0.8rem;
+    color: #333333;
+    font-weight: 500;
+}
+
+/* Multi-step Display Management Utilities */
+.hidden-panel { display: none !important; }
+.active-panel { display: block !important; }
+
+/* ==========================================================================
+   CUSTOMER SERVICE UTILITIES & MISC CANVAS CLIPS
+   ========================================================================== */
+.separation-spacing {
+    margin-top: 15px;
+}
+
+.yellow-bg-canvas {
+    background-color: #ffcc00 !important;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-top: 25px !important;
+    padding-bottom: 0 !important;
+}
+
+.centered-portrait {
+    max-height: 380px;
+    width: auto;
+    margin: 0 auto;
+    border-radius: 0;
+}
+
+.custom-padding-top {
+    padding-top: 28px !important;
+}
+
+.feature-headline-bold {
+    font-size: 24px;
+    font-weight: 800;
+    color: #000000;
+    line-height: 1.25;
+    margin-bottom: 16px;
+}
+
+.spacing-bottom {
+    margin-bottom: 18px !important;
+}
+
+.tracking-action-btn {
+    border-radius: 25px !important;
+    padding: 15px !important;
+    font-size: 16px !important;
+}
+
+/* ==========================================================================
+   FOOTER QUICK LINKS NAVIGATION SYSTEMS
+   ========================================================================== */
+.quick-links-section {
+    text-align: left;
+    padding: 24px 16px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.links-main-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #d40511;
+    margin-bottom: 20px;
+}
+
+.links-navigation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.nav-link-item {
+    font-size: 15px;
+    font-weight: 500;
+    color: #666666;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link-item:hover {
+    color: #000000;
+}
+
+/* ==========================================================================
+   GLOBAL CORPORATE FOOTER BLOCK
+   ========================================================================== */
+.corporate-footer {
+    background-color: #f4f4f4;
+    border-top: 1px solid #e0e0e0;
+    padding: 36px 16px 24px 16px;
+    margin-top: 20px;
+}
+
+.footer-inner-container {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.footer-logo-block {
+    font-size: 24px;
+    font-style: italic;
+    margin-bottom: 24px;
+}
+
+.f-logo-bold {
+    font-weight: 900;
+    color: #000000;
+}
+
+.f-logo-group {
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    font-style: normal;
+    display: block;
+    margin-top: -4px;
+}
+
+.footer-copyright-row {
+    font-size: 12px;
+    color: #666666;
+    font-weight: 500;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 20px;
+}
+
+
+/* ==========================================================================
+   DHL ECOMMERCE DYNAMIC CONTACT FORM LAYOUT
+   ========================================================================== */
+.form-hero-block {
+    text-align: left;
+    background-color: #ffffff;
+    padding: 10px 8px;
+}
+
+.form-main-title {
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.15;
+    color: #000000;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.form-intro-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #111111;
+    margin-bottom: 20px;
+}
+
+.form-body-desc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #222222;
+    margin-bottom: 20px;
+}
+
+.info-meta-row {
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.meta-label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.closed-notice-text {
+    font-size: 14px;
+    color: #333333;
+    line-height: 1.4;
+    margin-bottom: 25px;
+}
+
+.mandatory-notice {
+    font-size: 15px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+/* Form Fields Styling */
+.custom-portal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #ffffff;
+    text-align: left;
+}
+
+.form-section-subtitle {
+    font-size: 20px;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 8px;
+}
+
+.form-field-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.styled-form-input {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    border: 1px solid #767676;
+    border-radius: 12px;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.styled-form-textarea {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    border: 1px solid #767676;
+    border-radius: 12px;
+    outline: none;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.styled-form-input:focus, .styled-form-textarea:focus {
+    border-color: #d40511;
+}
+
+/* Dropdown / Select clean override */
+.select-clean {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.dropdown-arrow-wrapper .custom-select-arrow {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #d40511;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* Privacy Text */
+.privacy-notice-links {
+    font-size: 15px;
+    line-height: 1.4;
+    color: #111111;
+    margin: 15px 0;
+}
+
+.inline-red-link {
+    color: #d40511;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.mini-external-icon {
+    font-size: 12px;
+    margin-left: 2px;
+}
+
+/* Submit Action Button styling matches image_4.png */
+.btn-submit-inquiry {
+    background-color: #d40511 !important;
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 700;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn-submit-inquiry:hover {
+    background-color: #b3040e !important;
+}
+
+/* MODAL OVERLAYS */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-overlay.hidden-panel-layout {
+    display: none !important;
+}
+
+.location-modal-card, .search-modal-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.modal-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-header-row h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.modal-close-icon {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.location-search-field input, .search-input-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+
+.country-selection-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.country-selection-list li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+}
+
+.country-selection-list li:hover {
+    background: #f8f8f8;
+    color: #d40511;
+}
+
+.flag-icon {
+    font-size: 18px;
+    margin-right: 6px;
+}
+
+/* DRAWER FOOTER & LEGAL SECTIONS */
+.drawer-footer-container {
+    background-color: #ffffff;
+    padding-top: 20px;
+    margin-top: 10px;
+}
+
+.drawer-section-group {
+    padding: 15px 20px;
+}
+
+.drawer-group-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 15px;
+}
+
+.drawer-link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.drawer-link-list li {
+    margin-bottom: 16px;
+}
+
+.drawer-link-list li a {
+    color: #444444;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.drawer-link-list li a.active-link {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #111111;
+}
+
+.drawer-link-list li a i {
+    font-size: 12px;
+    color: #666666;
+}
+
+/* BOTTOM GREY BRANDING AREA */
+.drawer-bottom-branding-panel {
+    background-color: #f4f4f4;
+    padding: 30px 20px 40px 20px;
+    margin-top: 15px;
+}
+
+.group-logo-wrapper {
+    margin-bottom: 25px;
+}
+
+.group-logo-wrapper .logo-bold {
+    font-weight: 900;
+    font-size: 22px;
+    color: #000000;
+}
+
+.group-logo-wrapper .logo-light {
+    font-weight: 300;
+    font-size: 22px;
+    color: #000000;
+}
+
+.group-subtext {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000000;
+    margin-top: -4px;
+}
+
+.drawer-legal-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.drawer-legal-links li {
+    margin-bottom: 18px;
+}
+
+.drawer-legal-links li a {
+    color: #555555;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.drawer-legal-links li a:hover {
+    color: #d40511;
+}
+
+

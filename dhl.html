@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistics & Shipping Portal</title>
+    <link rel="stylesheet" href="dhl.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo" id="headerLogoBtn" style="cursor: pointer;">
+                <span class="logo-bold">SHIP</span><span class="logo-light">OVERSEAS</span>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- OVERLAY DRAWER MENU -->
+    <div class="full-screen-menu" id="fullOverlayMenu">
+        <div class="menu-overlay-header">
+            <div class="logo">
+                <span class="logo-bold">LOGISTICS</span><span class="logo-light">EXPRESS</span>
+            </div>
+            <button class="menu-close-btn" id="closeMenu" aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <nav class="overlay-nav-links">
+            <button class="drawer-row-item interactive-btn" id="drawerTrackBtn">
+                <span>Track</span>
+            </button>
+            
+            <div class="drawer-row-item dropdown-row">
+                <span>Ship</span>
+                <i class="fa-solid fa-chevron-down dropdown-arrow-icon"></i>
+            </div>
+            
+            <a href="#" class="drawer-row-item" id="menuCustomerServiceBtn">Customer Service</a>
+            
+            <a href="#" class="drawer-row-item highlight-icon-link" id="drawerPortalLoginsBtn">
+                <span class="left-icon-group"><i class="fa-solid fa-user"></i> Customer Portal Logins</span>
+                <i class="fa-solid fa-chevron-right red-arrow"></i>
+            </a>
+            
+            <a href="#" class="drawer-row-item highlight-icon-link" id="drawerFindServicePointBtn">
+                <span>Find a Service Point</span>
+                <i class="fa-solid fa-arrow-up-right-from-square external-link-indicator"></i>
+            </a>
+            
+            <a href="#" class="drawer-row-item search-row-item" id="drawerSearchBtn">
+                <i class="fa-solid fa-magnifying-glass search-inline-icon"></i> Search
+            </a>
+            
+            <div class="drawer-row-item location-row-item" id="drawerLocationBtn" style="cursor: pointer;">
+                <span id="currentFlagBadge" class="flag-icon">🇳🇬</span>
+                <span class="location-label">Change Location <span class="country-code-text" id="currentCountryCode">(NG)</span></span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- CHANGE LOCATION MODAL -->
+    <div id="locationModalOverlay" class="modal-overlay hidden-panel-layout">
+        <div class="location-modal-card">
+            <div class="modal-header-row">
+                <h3>Select Your Country</h3>
+                <button id="closeLocationModal" class="modal-close-icon"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="location-search-field">
+                <input type="text" id="countrySearchInput" placeholder="Search country...">
+            </div>
+            <ul class="country-selection-list" id="countryListOptions">
+                <li data-code="NG" data-flag="🇳🇬"><span>🇳🇬</span> Nigeria (NG)</li>
+                <li data-code="US" data-flag="🇺🇸"><span>🇺🇸</span> United States (US)</li>
+                <li data-code="GB" data-flag="🇬🇧"><span>🇬🇧</span> United Kingdom (GB)</li>
+                <li data-code="DE" data-flag="🇩🇪"><span>🇩🇪</span> Germany (DE)</li>
+                <li data-code="CA" data-flag="🇨🇦"><span>🇨🇦</span> Canada (CA)</li>
+                <li data-code="FR" data-flag="🇫🇷"><span>🇫🇷</span> France (FR)</li>
+                <li data-code="IT" data-flag="🇮🇹"><span>🇮🇹</span> Italy (IT)</li>
+                <li data-code="ZA" data-flag="🇿🇦"><span>🇿🇦</span> South Africa (ZA)</li>
+                <li data-code="AE" data-flag="🇦🇪"><span>🇦🇪</span> UAE (AE)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SEARCH MODAL -->
+    <div id="searchModalOverlay" class="modal-overlay hidden-panel-layout">
+        <div class="search-modal-card">
+            <div class="modal-header-row">
+                <h3>Search Portal</h3>
+                <button id="closeSearchModal" class="modal-close-icon"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="search-input-box">
+                <input type="text" id="globalSearchInput" placeholder="What are you looking for?">
+            </div>
+            <div id="searchResultsContainer" class="search-results-list">
+                <p class="search-placeholder-text">Type to search services, tracking, or locations...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOMEPAGE PRIMARY VIEW -->
+    <main class="portal-container" id="homepagePrimaryView">
+        <section class="tracking-section">
+            <h1 class="section-title">Track Your Shipment</h1>
+            <div class="card track-card">
+                <form action="#" method="POST" class="track-form">
+                    <div class="input-group">
+                        <input type="text" id="tracking-id" placeholder="Enter your tracking number(s)" required>
+                    </div>
+                    <button type="submit" class="btn-track">Track</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="actions-section">
+            <div class="card action-card">
+                <div class="card-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                <h2 class="card-heading">Ship Now</h2>
+                <p class="card-subtext">Find the right service</p>
+            </div>
+
+            <div class="card action-card">
+                <div class="card-icon"><i class="fa-solid fa-file-invoice"></i></div>
+                <h2 class="card-heading">Get a Quote</h2>
+                <p class="card-subtext">Estimate cost to share and compare</p>
+            </div>
+
+            <div class="card action-card premium-badge" id="homeBusinessTriggerCard" style="cursor: pointer;">
+                <div class="card-icon"><i class="fa-solid fa-building"></i></div>
+                <h2 class="card-heading">Logistics for Business</h2>
+                <p class="card-subtext">Shipping regularly? Request a business account and profit from exclusive benefits</p>
+            </div>
+        </section>
+
+        <section class="tariff-banner">
+            <h2 class="tariff-title">Navigating Latest Tariff Developments</h2>
+            <p class="tariff-text">
+                Global trade is becoming increasingly complex as new U.S. tariffs and varying reciprocal measures emerge across countries and industries. At our company, we are committed to helping you navigate these changes.
+            </p>
+            <button class="btn-tariff-solutions">Explore Our Solutions</button>
+        </section>
+
+        <div class="image-container-card">
+            <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80" alt="Logistics Team" class="tariff-image">
+        </div>
+
+        <section class="shipping-info-section">
+            <div class="card info-module-card">
+                <div class="info-card-header">
+                    <h2 class="info-main-title">Document and Parcel Shipping</h2>
+                    <p class="info-subtitle">For All Shippers</p>
+                    <p class="info-body-text">
+                        Learn about Logistics Express – the undisputed global leader in international express shipping.
+                    </p>
+                </div>
+
+                <div class="services-list-container">
+                    <h3 class="services-list-title">Services Available</h3>
+                    <ul class="services-list">
+                        <li class="service-item">
+                            <div class="square-icon-badge"><i class="fa-solid fa-plane-departure"></i></div>
+                            <span class="service-item-text">Next Possible Business Day</span>
+                        </li>
+                        <li class="service-item">
+                            <div class="square-icon-badge"><i class="fa-solid fa-house-laptop"></i></div>
+                            <span class="service-item-text">Flexible Import/Export Options</span>
+                        </li>
+                        <li class="service-item">
+                            <div class="square-icon-badge"><i class="fa-solid fa-boxes-stacked"></i></div>
+                            <span class="service-item-text">Tailored Business Solutions</span>
+                        </li>
+                        <li class="service-item">
+                            <div class="square-icon-badge"><i class="fa-solid fa-hand-holding-hand"></i></div>
+                            <span class="service-item-text">Wide Variety of Optional Services</span>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn-explore-express">Explore Logistics Express</button>
+            </div>
+        </section>
+
+        <section class="cargo-section">
+            <div class="image-container-card flush-bottom-radius">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="Cargo Specialists" class="tariff-image">
+            </div>
+            <div class="card info-module-card flush-top-radius negative-margin-top">
+                <div class="info-card-header">
+                    <h2 class="info-main-title">Cargo Shipping</h2>
+                    <p class="info-subtitle">Business Only</p>
+                    <p class="info-body-text">
+                        Discover shipping and logistics service options from Logistics Global Forwarding.
+                    </p>
+                </div>
+
+                <div class="services-list-container">
+                    <h3 class="services-list-title">Services Available</h3>
+                    <ul class="services-list">
+                        <li class="service-item">
+                            <div class="square-icon-badge"><i class="fa-solid fa-plane-up"></i></div>
+                            <span class="service-item-text">Air Freight</span>
+                        </li>
+                        <li class="service-item">
+                            <div class="square-icon-badge"><i class="fa-solid fa-truck"></i></div>
+                            <span class="service-item-text">Road Freight</span>
+                        </li>
+                        <li class="service-item">
+                            <div class="square-icon-badge"><i class="fa-solid fa-ship"></i></div>
+                            <span class="service-item-text">Ocean Freight</span>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn-explore-express">Explore Logistics Global Forwarding</button>
+            </div>
+        </section>
+
+        <section class="updates-section">
+            <h2 class="bold-section-heading">Important Service Updates</h2>
+            <p class="updates-subtext">Service bulletins keep you up to date with news and alerts</p>
+            <ul class="bulletins-list">
+                <li class="bulletin-item">
+                    <span class="bullet-square"></span>
+                    <a href="#" class="bulletin-link">Operational Update Middle East <i class="fa-solid fa-chevron-right"></i></a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="media-feature-card">
+            <div class="image-container-card flush-bottom-radius">
+                <img src="https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&w=600&q=80" alt="Sustainability Delivery Van" class="tariff-image">
+            </div>
+            <div class="card text-left-card flush-top-radius negative-margin-top">
+                <a href="#" class="feature-accent-link">Sustainability <i class="fa-solid fa-chevron-right"></i></a>
+                <p class="feature-description-text">
+                    Sustainable business begins with low carbon supply chains. Find out what we have to offer and how we integrate sustainability into our operations to reduce environmental impacts for your supply chain.
+                </p>
+            </div>
+        </section>
+
+        <section class="media-feature-card">
+            <div class="image-container-card flush-bottom-radius">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80" alt="Global Supply Metrics" class="tariff-image">
+            </div>
+            <div class="card text-left-card flush-top-radius negative-margin-top">
+                <h3 class="feature-inline-title">Globalization holds firm at a record level <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i></h3>
+                <p class="feature-description-text">
+                    The Logistics Global Connectedness Report 2026 offers the most comprehensive view of globalization available.
+                </p>
+            </div>
+        </section>
+    </main> 
+
+    <!-- TRACKING RESULTS VIEW -->
+    <main class="portal-container hidden-view" id="trackingResultsView">
+        <section class="cs-hero-section">
+            <h1 class="cs-main-heading">Shipment Details</h1>
+            <p class="cs-subheading-text" id="resultTrackingId">Tracking Number: --</p>
+        </section>
+
+        <!-- Status Card -->
+        <div class="card" style="border-top: 4px solid #d40511; text-align: left; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <span style="font-weight: bold; text-transform: uppercase; color: #d40511;" id="resultStatus">In Transit</span>
+                <span style="font-size: 12px; color: #666;" id="resultEstDelivery">Est. Delivery: Pending</span>
+            </div>
+            <p style="font-size: 14px; margin-bottom: 6px;"><strong>Origin:</strong> <span id="resultOrigin">--</span></p>
+            <p style="font-size: 14px;"><strong>Destination:</strong> <span id="resultDestination">--</span></p>
+        </div>
+
+        <!-- Timeline Progress -->
+        <div class="card" style="text-align: left;">
+            <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 16px;">Tracking History</h3>
+            <div id="timelineContainer" style="display: flex; flex-direction: column; gap: 16px; border-left: 2px solid #d40511; padding-left: 16px; margin-left: 8px;">
+                <!-- Dynamic updates render here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- TRACK & TRACE VIEW -->
+    <main class="portal-container hidden-view" id="trackTraceView">
+        <section class="track-trace-hero">
+            <h1 class="track-main-heading">Track & Trace</h1>
+        </section>
+
+        <section class="track-input-wrapper">
+            <div class="card embedded-track-card">
+                <form action="#" method="POST" class="track-form">
+                    <div class="input-group">
+                        <input type="text" placeholder="Enter your tracking number(s)" required>
+                    </div>
+                    <button type="submit" class="btn-track">Track</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="faq-container-section">
+            <h2 class="faq-section-title">Frequently Asked Questions</h2>
+            <div class="faq-divider-line"></div>
+
+            <div class="faq-accordion-item">
+                <button class="faq-trigger-header" type="button">
+                    <span>What Is a Tracking Number & Where Can I Find It?</span>
+                    <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                </button>
+                <div class="faq-content-panel">
+                    <p>A tracking number or ID is a combination of numbers and possibly letters that uniquely identifies your shipment for national or international tracking. </p>
+                    <p>Usually, the shipper or online shops is able to provide the tracking number or ID. If you have ordered a product in an online shop, the confirmation email or shipment tracking notification often contains the tracking number or ID.</p>
+                </div>
+            </div>
+
+            <div class="faq-accordion-item">
+                <button class="faq-trigger-header" type="button">
+                    <span>When will my tracking information appear?</span>
+                    <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                </button>
+                <div class="faq-content-panel">
+                    <p>Tracking events usually appear within 24-48 hours after the carrier receiving the Track and Trace ID. In general, once the shipment has reached our facility, a tracking event will appear</p>
+                </div>
+            </div>
+
+            <div class="faq-accordion-item">
+                <button class="faq-trigger-header" type="button">
+                    <span>Why is my tracking number/ID not working?</span>
+                    <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                </button>
+                <div class="faq-content-panel">
+                    <p>Please make sure you entered the correct tracking number in the correct format. Check for minimum length of 5 characters, and if there are any special characters in your input.</p>
+                </div>
+            </div>
+
+            <div class="faq-accordion-item">
+                <button class="faq-trigger-header" type="button">
+                    <span>If I do not have my tracking number, is it still possible to track my shipment?</span>
+                    <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                </button>
+                <div class="faq-content-panel">
+                    <p>If you do not have a tracking number, we advise you to contact your shipper. However, if you have other shipping reference numbers, they may work using shipment tracking systems.</p>
+                    <a href="#" class="open-contact-flow-trigger">Find your contact here.</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="media-feature-card separation-spacing">
+            <div class="image-container-card flush-bottom-radius yellow-bg-canvas">
+                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=600&q=80" alt="Courier Professional" class="tariff-image centered-portrait">
+            </div>
+            <div class="card text-left-card flush-top-radius negative-margin-top custom-padding-top">
+                <h3 class="feature-headline-bold">Stop Tracking the Box. Start Tracking Your Future.</h3>
+                <p class="feature-description-text spacing-bottom">Your career deserves a fast route, too.</p>
+                <button class="btn-explore-express tracking-action-btn">Unbox Your Potential</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- CUSTOMER SERVICE VIEW -->
+    <main class="portal-container hidden-view" id="customerServiceView">
+        <section class="cs-hero-section">
+            <nav class="cs-breadcrumb">
+                <span class="cs-breadcrumb-home" id="csHomeBreadcrumb" style="cursor: pointer;">Home</span> 
+                <i class="fa-solid fa-chevron-right cs-breadcrumb-arrow"></i> 
+                <span>Customer Service</span>
+            </nav>
+            <h1 class="cs-main-heading">Customer Service</h1>
+            <p class="cs-subheading-text">
+                Your tracking number lets us find the right division contact to answer your questions.
+            </p>
+        </section>
+
+        <section class="cs-form-wrapper">
+            <div class="cs-card-container">
+                <form action="#" method="POST" class="cs-search-form">
+                    <div class="cs-input-group">
+                        <input type="text" placeholder="Enter your tracking number(s)" required>
+                    </div>
+                    <button type="submit" class="cs-btn-submit">Find Contact</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="cs-cards-grid">
+            <div class="cs-action-card border-accent-gold business-trigger-card" style="cursor: pointer;">
+                <h3 class="cs-card-action-title">
+                    SHIP OVER SEAS for Business <i class="fa-solid fa-chevron-right red-arrow-inline"></i>
+                </h3>
+                <p class="cs-card-action-desc">Shipping regularly? Request a business account and profit from exclusive benefits</p>
+            </div>
+
+            <div class="cs-action-card">
+                <h3 class="cs-card-action-title">
+                    Do you suspect you received a fraudulent email? <i class="fa-solid fa-chevron-right red-arrow-inline"></i>
+                </h3>
+                <p class="cs-card-action-desc">Let us know.</p>
+            </div>
+
+            <div class="cs-action-card open-contact-flow-trigger" style="cursor: pointer;">
+                <h3 class="cs-card-action-title">
+                    No tracking number? <i class="fa-solid fa-chevron-right red-arrow-inline"></i>
+                </h3>
+                <p class="cs-card-action-desc">Find your contact here.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FIND CONTACT VIEW -->
+    <main class="portal-container hidden-view" id="findContactView">
+        <section class="fc-hero-section">
+            <nav class="fc-breadcrumb">
+                <span class="fc-breadcrumb-home" style="cursor: pointer;">Home</span> 
+                <i class="fa-solid fa-chevron-right fc-breadcrumb-arrow"></i> 
+                <span class="fc-breadcrumb-cs" style="cursor: pointer;">Customer Service</span>
+                <i class="fa-solid fa-chevron-right fc-breadcrumb-arrow"></i> 
+                <span>Find Your Contact</span>
+            </nav>
+            <h1 class="fc-main-heading">SHIP OVER SEAS Customer Service</h1>
+            <h2 class="fc-sub-heading">Find Your Contact</h2>
+        </section>
+
+        <div class="fc-flow-window">
+            <p class="fc-prompt-text">Who do you want to talk to?</p>
+
+            <div class="fc-options-stack">
+                <div class="fc-division-card" data-division="express">
+                    <div class="fc-card-left">
+                        <i class="fa-solid fa-box-open fc-div-icon font-red"></i>
+                        <span class="fc-div-name">SHIP OVER SEAS Express</span>
+                    </div>
+                    <i class="fa-solid fa-check fc-check-marker"></i>
+                </div>
+
+                <div class="fc-division-card" data-division="ecommerce" id="ecommerceCardTrigger">
+                    <div class="fc-card-left">
+                        <i class="fa-solid fa-truck fc-div-icon font-red"></i>
+                        <span class="fc-div-name">SHIP OVER SEAS eCommerce</span>
+                    </div>
+                    <i class="fa-solid fa-check fc-check-marker"></i>
+                </div>
+
+                <div class="fc-division-card" data-division="deutschepost">
+                    <div class="fc-card-left">
+                        <i class="fa-solid fa-envelope fc-div-icon font-red"></i>
+                        <span class="fc-div-name">SHIP OVER SEAS Postal</span>
+                    </div>
+                    <i class="fa-solid fa-check fc-check-marker"></i>
+                </div>
+
+                <div class="fc-division-card" data-division="forwarding">
+                    <div class="fc-card-left">
+                        <i class="fa-solid fa-plane-up fc-div-icon font-red"></i>
+                        <span class="fc-div-name">SHIP OVER SEAS Global Forwarding</span>
+                    </div>
+                    <i class="fa-solid fa-check fc-check-marker"></i>
+                </div>
+
+                <div class="fc-division-card" data-division="freight">
+                    <div class="fc-card-left">
+                        <i class="fa-solid fa-train fc-div-icon font-red"></i>
+                        <span class="fc-div-name">SHIP OVER SEAS Freight</span>
+                    </div>
+                    <i class="fa-solid fa-check fc-check-marker"></i>
+                </div>
+
+                <div class="fc-division-card" data-division="supply">
+                    <div class="fc-card-left">
+                        <i class="fa-solid fa-link fc-div-icon font-red"></i>
+                        <span class="fc-div-name">SHIP OVER SEAS Supply Chain</span>
+                    </div>
+                    <i class="fa-solid fa-check fc-check-marker"></i>
+                </div>
+
+                <div class="fc-division-card" data-division="other">
+                    <div class="fc-card-left">
+                        <i class="fa-solid fa-user-tie fc-div-icon font-red"></i>
+                        <span class="fc-div-name">Other / I don't know</span>
+                    </div>
+                    <i class="fa-solid fa-check fc-check-marker"></i>
+                </div>
+            </div>
+
+            <div class="fc-expanded-panel hidden-panel-layout" id="ecommerceDetailsPanel">
+                <div class="fc-panel-intro">
+                    <h3 class="fc-panel-title">SHIP OVER SEAS eCommerce</h3>
+                    <p class="fc-panel-desc">Standard international and domestic parcel services.</p>
+                    <button class="fc-btn-visit-division">Visit SHIP OVER SEAS eCommerce</button>
+                </div>
+
+                <div class="fc-golden-focus-card">
+                    <div class="fc-golden-banner">
+                        <i class="fa-solid fa-truck fc-banner-center-icon"></i>
+                        <h4 class="fc-banner-heading">SHIP OVER SEAS eCommerce</h4>
+                        <p class="fc-banner-body">Standard international document and package services. Are you expecting a shipment sent with SHIP OVER SEAS eCommerce?</p>
+                    </div>
+                    <div class="fc-golden-body">
+                        <h5 class="fc-tracking-title">Shipment Tracking and Status:</h5>
+                        <span class="fc-tracking-sub">(Personal and Business)</span>
+                        <ul class="fc-action-links-list">
+                            <li><a href="#" class="fc-action-url">Contact Customer Service</a></li>
+                            <li><a href="#" class="fc-action-url">Frequently Asked Questions</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fc-expanded-panel hidden-panel-layout" id="genericDetailsPanel">
+                <div class="fc-panel-intro">
+                    <h3 class="fc-panel-title fc-panel-title-text">SHIP OVER SEAS Service</h3>
+                    <p class="fc-panel-desc">Standard international and domestic shipping logistics operations support.</p>
+                    <button class="fc-btn-visit-division">Visit Division Services</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- BUSINESS VIEW -->
+    <main class="portal-container hidden-view" id="shipoverseasBusinessView">
+        <section class="business-hero-section">
+            <h1 class="biz-main-heading">SHIP OVER SEAS for Business</h1>
+            <p class="biz-subheading-text">Get connected to the right experts in a few easy steps</p>
+        </section>
+
+        <section class="biz-profile-wizard-section">
+            <h2 class="biz-section-title">My Shipping Profile</h2>
+            <div class="biz-wizard-card">
+                <form id="shippingProfileForm" autocomplete="off">
+                    <div class="biz-wizard-step-panel active-panel" id="wizardStep1">
+                        <h3 class="panel-instruction-text">To find your service match, select all that you ship on a regular basis.</h3>
+                        <label class="biz-selection-option-card checked-option">
+                            <div class="option-details-content">
+                                <h4 class="option-headline">Parcels & Documents</h4>
+                                <span class="option-badge-pill">Typically up to 50kg</span>
+                            </div>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ECOMMERCE FORM VIEW -->
+    <main class="portal-container hidden-view" id="shipoverseasEcommerceFormView">
+        <div style="padding: 15px; max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+            
+            <div class="form-hero-block">
+                <h1 class="form-main-title" style="font-size: 32px; font-weight: 900; line-height: 1.15; color: #000000; margin-bottom: 20px;">Contact SHIP OVER SEAS eCommerce About a Shipment</h1>
+                <p class="form-intro-text" style="font-size: 16px; font-weight: 500; color: #111111; margin-bottom: 20px;">Do you have an inquiry about a shipment sent using SHIP OVER SEAS eCommerce?</p>
+                <p class="form-body-desc" style="font-size: 15px; line-height: 1.5; color: #222222; margin-bottom: 20px;">
+                    If you need immediate assistance, please call one of our agents at 
+                    <strong>+ 49 228 92 95 95 95</strong> (English and French speaking only) or fill out the quick form below and someone will be in touch. Costs for an international call will be incurred.
+                </p>
+                
+                <div class="info-meta-row" style="margin-bottom: 20px; font-size: 15px;">
+                    <span class="meta-label" style="font-weight: 700; display: block; margin-bottom: 2px;">Hours:</span>
+                    <p style="margin: 0;">Monday – Friday, 8 am - 6 pm (Summer UTC +1 and Winter UTC)</p>
+                </div>
+                
+                <p class="closed-notice-text" style="font-size: 14px; color: #333333; line-height: 1.4; margin-bottom: 25px;">
+                    Please note that Customer Service will be closed on the weekends, December 25 and January 1.
+                </p>
+                
+                <p class="mandatory-notice" style="font-size: 15px; font-weight: 700; color: #000000; margin-bottom: 10px;">All fields marked with an asterisk (*) are mandatory.</p>
+            </div>
+
+            <form id="ecommerceInquiryForm" class="custom-portal-form" style="display: flex; flex-direction: column; gap: 12px;">
+                <h2 class="form-section-subtitle" style="font-size: 20px; font-weight: 800; color: #000000; margin-bottom: 8px;">Your contact information</h2>
+                
+                <div class="form-field-wrapper" style="position: relative; width: 100%;">
+                    <select required class="styled-form-input select-clean" style="width: 100%; padding: 16px; font-size: 16px; border: 1px solid #767676; border-radius: 12px; background-color: #ffffff; appearance: none; -webkit-appearance: none;">
+                        <option value="" disabled selected hidden>Please add a Salutation*</option>
+                        <option value="mr">Mr.</option>
+                        <option value="ms">Ms.</option>
+                        <option value="mrs">Mrs.</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down custom-select-arrow" style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #d40511; pointer-events: none;"></i>
+                </div>
+
+                <div class="form-field-wrapper" style="position: relative; width: 100%;">
+                    <input type="text" required placeholder="First name*" class="styled-form-input" style="width: 100%; padding: 16px; font-size: 16px; border: 1px solid #767676; border-radius: 12px; box-sizing: border-box;">
+                </div>
+
+                <div class="form-field-wrapper" style="position: relative; width: 100%;">
+                    <input type="text" required placeholder="Last Name*" class="styled-form-input" style="width: 100%; padding: 16px; font-size: 16px; border: 1px solid #767676; border-radius: 12px; box-sizing: border-box;">
+                </div>
+
+                <div class="form-field-wrapper" style="position: relative; width: 100%;">
+                    <input type="email" required placeholder="Email*" class="styled-form-input" style="width: 100%; padding: 16px; font-size: 16px; border: 1px solid #767676; border-radius: 12px; box-sizing: border-box;">
+                </div>
+
+                <div class="form-field-wrapper" style="position: relative; width: 100%;">
+                    <input type="tel" required placeholder="Telephone number including your country code*" class="styled-form-input" style="width: 100%; padding: 16px; font-size: 16px; border: 1px solid #767676; border-radius: 12px; box-sizing: border-box;">
+                </div>
+
+                <div class="form-field-wrapper" style="position: relative; width: 100%;">
+                    <select required class="styled-form-input select-clean" style="width: 100%; padding: 16px; font-size: 16px; border: 1px solid #767676; border-radius: 12px; background-color: #ffffff; appearance: none; -webkit-appearance: none;">
+                        <option value="" disabled selected hidden>Select your country/region*</option>
+                        <option value="AF">Afghanistan</option>
+                        <option value="AL">Albania</option>
+                        <option value="DZ">Algeria</option>
+                        <option value="AS">American Samoa</option>
+                        <option value="AD">Andorra</option>
+                        <option value="AO">Angola</option>
+                        <option value="AI">Anguilla</option>
+                        <option value="AG">Antigua & Barbuda</option>
+                        <option value="AR">Argentina</option>
+                        <option value="AM">Armenia</option>
+                        <option value="AW">Aruba</option>
+                        <option value="AU">Australia</option>
+                        <option value="AT">Austria</option>
+                        <option value="AZ">Azerbaijan</option>
+                        <option value="BS">Bahamas</option>
+                        <option value="BH">Bahrain</option>
+                        <option value="BD">Bangladesh</option>
+                        <option value="BB">Barbados</option>
+                        <option value="BY">Belarus</option>
+                        <option value="BE">Belgium</option>
+                        <option value="BZ">Belize</option>
+                        <option value="BJ">Benin</option>
+                        <option value="BM">Bermuda</option>
+                        <option value="BT">Bhutan</option>
+                        <option value="BO">Bolivia</option>
+                        <option value="BA">Bosnia & Herzegovina</option>
+                        <option value="BW">Botswana</option>
+                        <option value="BR">Brazil</option>
+                        <option value="VG">British Virgin Islands</option>
+                        <option value="BN">Brunei</option>
+                        <option value="BG">Bulgaria</option>
+                        <option value="BF">Burkina Faso</option>
+                        <option value="BI">Burundi</option>
+                        <option value="KH">Cambodia</option>
+                        <option value="CM">Cameroon</option>
+                        <option value="CA">Canada</option>
+                        <option value="CV">Cape Verde</option>
+                        <option value="KY">Cayman Islands</option>
+                        <option value="CF">Central African Republic</option>
+                        <option value="TD">Chad</option>
+                        <option value="CL">Chile</option>
+                        <option value="CN">China</option>
+                        <option value="CO">Colombia</option>
+                        <option value="KM">Comoros</option>
+                        <option value="CG">Congo - Brazzaville</option>
+                        <option value="CD">Congo - Kinshasa</option>
+                        <option value="CK">Cook Islands</option>
+                        <option value="CR">Costa Rica</option>
+                        <option value="HR">Croatia</option>
+                        <option value="CU">Cuba</option>
+                        <option value="CY">Cyprus</option>
+                        <option value="CZ">Czechia</option>
+                        <option value="DK">Denmark</option>
+                        <option value="DJ">Djibouti</option>
+                        <option value="DM">Dominica</option>
+                        <option value="DO">Dominican Republic</option>
+                        <option value="EC">Ecuador</option>
+                        <option value="EG">Egypt</option>
+                        <option value="SV">El Salvador</option>
+                        <option value="GQ">Equatorial Guinea</option>
+                        <option value="ER">Eritrea</option>
+                        <option value="EE">Estonia</option>
+                        <option value="SZ">Eswatini</option>
+                        <option value="ET">Ethiopia</option>
+                        <option value="FK">Falkland Islands</option>
+                        <option value="FO">Faroe Islands</option>
+                        <option value="FJ">Fiji</option>
+                        <option value="FI">Finland</option>
+                        <option value="FR">France</option>
+                        <option value="GF">French Guiana</option>
+                        <option value="PF">French Polynesia</option>
+                        <option value="GA">Gabon</option>
+                        <option value="GM">Gambia</option>
+                        <option value="GE">Georgia</option>
+                        <option value="DE">Germany</option>
+                        <option value="GH">Ghana</option>
+                        <option value="GI">Gibraltar</option>
+                        <option value="GR">Greece</option>
+                        <option value="GL">Greenland</option>
+                        <option value="GD">Grenada</option>
+                        <option value="GP">Guadeloupe</option>
+                        <option value="GU">Guam</option>
+                        <option value="GT">Guatemala</option>
+                        <option value="GN">Guinea</option>
+                        <option value="GW">Guinea-Bissau</option>
+                        <option value="GY">Guyana</option>
+                        <option value="HT">Haiti</option>
+                        <option value="HN">Honduras</option>
+                        <option value="HK">Hong Kong SAR</option>
+                        <option value="HU">Hungary</option>
+                        <option value="IS">Iceland</option>
+                        <option value="IN">India</option>
+                        <option value="ID">Indonesia</option>
+                        <option value="IR">Iran</option>
+                        <option value="IQ">Iraq</option>
+                        <option value="IE">Ireland</option>
+                        <option value="IL">Israel</option>
+                        <option value="IT">Italy</option>
+                        <option value="JM">Jamaica</option>
+                        <option value="JP">Japan</option>
+                        <option value="JO">Jordan</option>
+                        <option value="KZ">Kazakhstan</option>
+                        <option value="KE">Kenya</option>
+                        <option value="KI">Kiribati</option>
+                        <option value="KP">North Korea</option>
+                        <option value="KR">South Korea</option>
+                        <option value="KW">Kuwait</option>
+                        <option value="KG">Kyrgyzstan</option>
+                        <option value="LA">Laos</option>
+                        <option value="LV">Latvia</option>
+                        <option value="LB">Lebanon</option>
+                        <option value="LS">Lesotho</option>
+                        <option value="LR">Liberia</option>
+                        <option value="LY">Libya</option>
+                        <option value="LI">Liechtenstein</option>
+                        <option value="LT">Lithuania</option>
+                        <option value="LU">Luxembourg</option>
+                        <option value="MO">Macao SAR</option>
+                        <option value="MG">Madagascar</option>
+                        <option value="MW">Malawi</option>
+                        <option value="MY">Malaysia</option>
+                        <option value="MV">Maldives</option>
+                        <option value="ML">Mali</option>
+                        <option value="MT">Malta</option>
+                        <option value="MH">Marshall Islands</option>
+                        <option value="MQ">Martinique</option>
+                        <option value="MR">Mauritania</option>
+                        <option value="MU">Mauritius</option>
+                        <option value="YT">Mayotte</option>
+                        <option value="MX">Mexico</option>
+                        <option value="FM">Micronesia</option>
+                        <option value="MD">Moldova</option>
+                        <option value="MC">Monaco</option>
+                        <option value="MN">Mongolia</option>
+                        <option value="ME">Montenegro</option>
+                        <option value="MS">Montserrat</option>
+                        <option value="MA">Morocco</option>
+                        <option value="MZ">Mozambique</option>
+                        <option value="MM">Myanmar (Burma)</option>
+                        <option value="NA">Namibia</option>
+                        <option value="NR">Nauru</option>
+                        <option value="NP">Nepal</option>
+                        <option value="NL">Netherlands</option>
+                        <option value="NC">New Caledonia</option>
+                        <option value="NZ">New Zealand</option>
+                        <option value="NI">Nicaragua</option>
+                        <option value="NE">Niger</option>
+                        <option value="NG">Nigeria</option>
+                        <option value="NU">Niue</option>
+                        <option value="MK">North Macedonia</option>
+                        <option value="MP">Northern Mariana Islands</option>
+                        <option value="NO">Norway</option>
+                        <option value="OM">Oman</option>
+                        <option value="PK">Pakistan</option>
+                        <option value="PW">Palau</option>
+                        <option value="PS">Palestine</option>
+                        <option value="PA">Panama</option>
+                        <option value="PG">Papua New Guinea</option>
+                        <option value="PY">Paraguay</option>
+                        <option value="PE">Peru</option>
+                        <option value="PH">Philippines</option>
+                        <option value="PL">Poland</option>
+                        <option value="PT">Portugal</option>
+                        <option value="PR">Puerto Rico</option>
+                        <option value="QA">Qatar</option>
+                        <option value="RE">Réunion</option>
+                        <option value="RO">Romania</option>
+                        <option value="RU">Russia</option>
+                        <option value="RW">Rwanda</option>
+                        <option value="WS">Samoa</option>
+                        <option value="SM">San Marino</option>
+                        <option value="ST">São Tomé & Príncipe</option>
+                        <option value="SA">Saudi Arabia</option>
+                        <option value="SN">Senegal</option>
+                        <option value="RS">Serbia</option>
+                        <option value="SC">Seychelles</option>
+                        <option value="SL">Sierra Leone</option>
+                        <option value="SG">Singapore</option>
+                        <option value="SX">Sint Maarten</option>
+                        <option value="SK">Slovakia</option>
+                        <option value="SI">Slovenia</option>
+                        <option value="SB">Solomon Islands</option>
+                        <option value="SO">Somalia</option>
+                        <option value="ZA">South Africa</option>
+                        <option value="ES">Spain</option>
+                        <option value="LK">Sri Lanka</option>
+                        <option value="SD">Sudan</option>
+                        <option value="SR">Suriname</option>
+                        <option value="SE">Sweden</option>
+                        <option value="CH">Switzerland</option>
+                        <option value="SY">Syria</option>
+                        <option value="TW">Taiwan</option>
+                        <option value="TJ">Tajikistan</option>
+                        <option value="TZ">Tanzania</option>
+                        <option value="TH">Thailand</option>
+                        <option value="TG">Togo</option>
+                        <option value="TK">Tokelau</option>
+                        <option value="TO">Tonga</option>
+                        <option value="TT">Trinidad & Tobago</option>
+                        <option value="TN">Tunisia</option>
+                        <option value="TR">Turkey</option>
+                        <option value="TM">Turkmenistan</option>
+                        <option value="TC">Turks & Caicos Islands</option>
+                        <option value="TV">Tuvalu</option>
+                        <option value="VI">U.S. Virgin Islands</option>
+                        <option value="UG">Uganda</option>
+                        <option value="UA">Ukraine</option>
+                        <option value="AE">United Arab Emirates</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="US">United States</option>
+                        <option value="UY">Uruguay</option>
+                        <option value="UZ">Uzbekistan</option>
+                        <option value="VU">Vanuatu</option>
+                        <option value="VE">Venezuela</option>
+                        <option value="VN">Vietnam</option>
+                        <option value="WF">Wallis & Futuna</option>
+                        <option value="YE">Yemen</option>
+                        <option value="ZM">Zambia</option>
+                        <option value="ZW">Zimbabwe</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down custom-select-arrow" style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #d40511; pointer-events: none;"></i>
+                </div>
+
+                <div class="form-field-wrapper" style="position: relative; width: 100%;">
+                    <input type="text" placeholder="Shipment ID/Tracking Number" class="styled-form-input" style="width: 100%; padding: 16px; font-size: 16px; border: 1px solid #767676; border-radius: 12px; box-sizing: border-box;">
+                </div>
+
+                <div class="form-field-wrapper" style="position: relative; width: 100%;">
+                    <select required class="styled-form-input select-clean" style="width: 100%; padding: 16px; font-size: 16px; border: 1px solid #767676; border-radius: 12px; background-color: #ffffff; appearance: none; -webkit-appearance: none;">
+                        <option value="" disabled selected hidden>Reason for your inquiry*</option>
+                        <option value="status">Where is my package?</option>
+                        <option value="damage">Damaged shipment delivery</option>
+                        <option value="address">Change delivery address details</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down custom-select-arrow" style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #d40511; pointer-events: none;"></i>
+                </div>
+
+                <div class="form-field-wrapper" style="position: relative; width: 100%;">
+                    <textarea required placeholder="Please describe your question or problem as clearly as possible*" class="styled-form-textarea" rows="5" style="width: 100%; padding: 16px; font-size: 16px; border: 1px solid #767676; border-radius: 12px; box-sizing: border-box; resize: vertical; font-family: inherit;"></textarea>
+                </div>
+
+                <p class="privacy-notice-links" style="font-size: 15px; line-height: 1.4; color: #111111; margin: 15px 0;">
+                    If you would like to learn more about how SHIP OVER SEAS uses your personal data, please read our 
+                    <a href="#" class="inline-red-link" style="color: #d40511; text-decoration: underline; font-weight: 500;">privacy notice <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 12px; margin-left: 2px;"></i></a>.
+                </p>
+
+                <button type="submit" class="btn-submit-inquiry" style="background-color: #d40511; color: #ffffff; font-size: 16px; font-weight: 700; border: none; border-radius: 8px; padding: 16px; width: 100%; cursor: pointer; text-align: center; margin-bottom: 20px;">Submit Inquiry</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- SUCCESS VIEW -->
+    <main class="portal-container hidden-view" id="ecommerceSuccessView">
+        <div style="padding: 15px; max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+            
+            <h1 class="success-main-title" style="font-size: 32px; font-weight: 900; line-height: 1.15; color: #000000; margin-top: 20px; margin-bottom: 20px;">Your Inquiry Has Been Received</h1>
+            
+            <p style="font-size: 16px; line-height: 1.5; color: #222222; margin-bottom: 25px;">
+                One of our experts will review your information within the next few business days.
+            </p>
+            
+            <p style="font-size: 16px; line-height: 1.5; color: #222222; margin-bottom: 35px;">
+                For more information about SHIP OVER SEAS eCommerce Tracking and Shipment status issue, please 
+                <a href="#" style="color: #d40511; text-decoration: underline;">visit our SHIP OVER SEAS eCommerce Tracking FAQs</a>.
+            </p>
+
+            <hr style="border: 0; border-top: 1px solid #e0e0e0; margin-bottom: 30px;">
+
+            <div class="success-links-block" style="display: flex; flex-direction: column; gap: 25px; margin-bottom: 40px;">
+                <div>
+                    <h3 style="color: #d40511; font-size: 18px; font-weight: 800; margin-bottom: 15px;">Quick Links</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; font-size: 16px; color: #666666;">
+                        <li>Customer Service</li>
+                        <li>Customer Portal Logins</li>
+                        <li>Developer Portal <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 12px; margin-left: 2px;"></i></li>
+                        <li>Get a Quote</li>
+                        <li>SHIP OVER SEAS for Business</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 style="color: #000000; font-size: 18px; font-weight: 800; margin-bottom: 15px;">Our Divisions</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; font-size: 16px; color: #666666;">
+                        <li>SHIP OVER SEAS Express</li>
+                        <li>SHIP OVER SEAS Global Forwarding</li>
+                        <li>Investors <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 12px; margin-left: 2px;"></i></li>
+                        <li>Sustainability</li>
+                        <li>Brand Partnerships</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <div style="font-size: 22px; font-weight: 900; letter-spacing: -0.5px; color: #000000;">
+                    SHIP OVER SEAS <span style="font-weight: 400; color: #333333; font-size: 16px; display: block; margin-top: -2px;">Group</span>
+                </div>
+            </div>
+
+            <ul style="list-style: none; padding: 0; margin: 0 0 35px 0; display: flex; flex-direction: column; gap: 14px; font-size: 16px; color: #666666;">
+                <li>Fraud Awareness</li>
+                <li>Legal Notice</li>
+                <li>Terms of Use</li>
+                <li>Privacy Notice</li>
+                <li>Additional Information</li>
+                <li>Cookie Settings</li>
+            </ul>
+
+            <div style="margin-bottom: 40px;">
+                <h4 style="font-size: 16px; font-weight: 800; color: #000000; margin-bottom: 15px;">Follow Us</h4>
+                <div style="display: flex; gap: 22px; font-size: 24px; color: #666666;">
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <div style="background: #ffffff; padding: 8px 24px; border-radius: 20px; font-size: 14px; font-weight: 700; color: #000000; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border: 1px solid #eaeaea;">
+                    shipoverseas.com
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- SERVICE POINT LOCATOR VIEW -->
+    <main class="portal-container hidden-view" id="locatorView">
+        <section class="cs-hero-section">
+            <h1 class="cs-main-heading">Find a Service Point</h1>
+            <p class="cs-subheading-text">Locate drop-off and pick-up service points near you.</p>
+        </section>
+        <div class="card" style="text-align: left;">
+            <div style="margin-bottom: 16px;">
+                <input type="text" placeholder="Enter city, address or postal code" style="width: 100%; padding: 14px; border: 1px solid #767676; border-radius: 8px; box-sizing: border-box;">
+            </div>
+            <div style="background-color: #f4f4f4; height: 250px; display: flex; align-items: center; justify-content: center; border-radius: 8px; color: #666;">
+                <p><i class="fa-solid fa-map-location-dot" style="font-size: 24px; margin-bottom: 8px; display: block; text-align: center;"></i> Interactive Map Loading...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- PORTAL LOGINS VIEW -->
+    <main class="portal-container hidden-view" id="portalsView">
+        <section class="cs-hero-section">
+            <h1 class="cs-main-heading">Customer Portal Logins</h1>
+            <p class="cs-subheading-text">Access your specialized shipping tools and management dashboards.</p>
+        </section>
+        <div class="cs-cards-grid">
+            <div class="cs-action-card" style="cursor: pointer;">
+                <h3 class="cs-card-action-title">MyDHL+ <i class="fa-solid fa-arrow-up-right-from-square red-arrow-inline"></i></h3>
+                <p class="cs-card-action-desc">Express shipping management for business and individual customers.</p>
+            </div>
+            <div class="cs-action-card" style="cursor: pointer;">
+                <h3 class="cs-card-action-title">Logistics Global Forwarding <i class="fa-solid fa-arrow-up-right-from-square red-arrow-inline"></i></h3>
+                <p class="cs-card-action-desc">Portal for air, ocean, and overland freight tracking and management.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- BRAND PARTNERSHIPS VIEW -->
+    <main class="portal-container hidden-view" id="brandPartnershipsView">
+        <section class="cs-hero-section">
+            <h1 class="cs-main-heading">Brand Partnerships</h1>
+            <p class="cs-subheading-text">Collaborate with SHIP OVER SEAS on global logistics and sports events.</p>
+        </section>
+        
+        <div class="card" style="text-align: left; padding: 24px;">
+            <h2 style="font-size: 20px; font-weight: 800; margin-bottom: 12px; color: #111;">Partnering for Excellence</h2>
+            <p style="font-size: 15px; color: #444; line-height: 1.6; margin-bottom: 20px;">
+                We connect brands and audiences through world-class logistics support. From international motorsports to global commerce initiatives, explore how we drive partnership value across industries.
+            </p>
+            <button class="btn-explore-express" style="width: auto; padding: 12px 24px;">Inquire About Partnership</button>
+        </div>
+    </main>
+
+    <section class="quick-links-section">
+        <h2 class="links-main-title">Quick Links</h2>
+        <nav class="links-navigation-list">
+            <a href="#" class="nav-link-item cs-footer-trigger">Customer Service</a>
+            <a href="#" class="nav-link-item">Customer Portal Logins</a>
+            <a href="#" class="nav-link-item">Developer portal</a>
+            <a href="#" class="nav-link-item">Get a Quote</a>
+            <a href="#" class="nav-link-item business-trigger-link">OVERSEAS for Business</a>
+        </nav>
+    </section>
+
+    <!-- DRAWER FOOTER LINKS & BRANDING -->
+    <div class="drawer-footer-container">
+        <div class="drawer-section-group">
+            <h4 class="drawer-group-title">Our Divisions</h4>
+            <ul class="drawer-link-list">
+                <li><a href="#">Logistics Express</a></li>
+                <li><a href="#">Global Forwarding</a></li>
+                <li><a href="#">Other Global Divisions</a></li>
+            </ul>
+        </div>
+
+        <div class="drawer-section-group">
+            <h4 class="drawer-group-title">Company Information</h4>
+            <ul class="drawer-link-list">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#" class="external-link">Delivered <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+                <li><a href="#" class="external-link">Careers <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+                <li><a href="#">Press Center</a></li>
+                <li><a href="#" class="external-link">Investors <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#" id="brandPartnershipsLink" class="active-link brand-partnerships-trigger">Brand Partnerships</a></li>
+            </ul>
+        </div>
+
+        <div class="drawer-bottom-branding-panel">
+            <div class="group-logo-wrapper">
+                <span class="logo-bold">LOGISTICS</span><span class="logo-light">EXPRESS</span>
+                <span class="group-subtext">Group</span>
+            </div>
+            
+            <ul class="drawer-legal-links">
+                <li><a href="#">Fraud Awareness</a></li>
+                <li><a href="#">Legal Notice</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Privacy Notice</a></li>
+                <li><a href="#">Additional Information</a></li>
+                <li><a href="#">Cookie Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="dhl.js"></script>
+</body>
+</html>
